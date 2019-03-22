@@ -2,4 +2,42 @@
 	margin:0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Baloo Chettan', cursive;
 }
+ 
+html,
+body{
+	height: 100%;
+}
+.qoute {
+	margin-top: 200px;
+}
+
+.container {
+	height: 100%;
+	overflow: hidden;
+	padding: 30px;
+
+
+}
+.time {
+	font-size: 1050%;
+}
+
+.wrapper {
+	color:white;
+	height: 100%;
+	text-align: center;
+	transform: translate(0%,18%);
+
+
+}
+
+/*.background {
+	position: absolute;
+	top:0;
+	left:0;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+}*/
+
