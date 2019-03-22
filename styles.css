@@ -2,7 +2,8 @@
 	margin:0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Baloo Chettan', cursive;
+	font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 }
  
 html,
@@ -10,7 +11,7 @@ body{
 	height: 100%;
 }
 .qoute {
-	margin-top: 200px;
+	margin-top: 50px;
 }
 
 .container {
@@ -22,6 +23,8 @@ body{
 }
 .time {
 	font-size: 1050%;
+	font-weight: 500;
+	text-shadow: 3px 5px 5px #000;
 }
 
 .wrapper {
@@ -31,6 +34,19 @@ body{
 	transform: translate(0%,18%);
 
 
+}
+.username {
+	border: none;
+	border-bottom: 4px solid white;
+	width:50%;
+	padding: 20px 0;
+	margin-bottom: 10px;
+	background: none;
+	outline: none;
+
+}
+.username:focus {
+	outline:none;
 }
 
 /*.background {
