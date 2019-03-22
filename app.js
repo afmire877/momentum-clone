@@ -4,6 +4,28 @@ const usernameInput = document.querySelector(".username");
 const greeting = document.querySelector(".greeting");
 let curDate = new Date();
 
+window.onload = function () {
+	
+    document.querySelector(".container").style.display = "block";
+};
+
+setInterval(timeUpdater, 1000);
+let username = getCookie('username');
+
+if(username){
+	greeting.style.display = "inline-block";
+	usernameInput.style.display = "none";
+	greeting.innerHTML = `Hello <span class="stored-name">${username}</span>.` ;
+}else {
+	greeting.style.display = "none";
+	usernameInput.style.display = "inline-block";
+	greeting.innerHTML = "What's your Name?";
+};
+
+
+
+
+
 
 function addToCookie(e){
 	if(e.which == 13){
@@ -87,7 +109,7 @@ function dateUpdater(){
 		break;
 	case 2:
 		date = "2nd"
-		brea;
+		break;
 	case 3:
 		date = "3rd"
 		break;
@@ -122,13 +144,55 @@ function dateUpdater(){
 
 	
 	let month = curDate.getMonth();
-	let year  = curDate.getYear();
+
+switch(curDate.getMonth() ){
+	case 0: 
+		month = "January"
+		break;
+	case 1:
+		month = "February"
+		break;
+	case 2:
+		month = "March"
+		break;
+	case 3:
+		month = "April"
+		break;
+	case 4:
+		month = "May"
+		break;
+	case 5:
+		month = "June"
+		break;
+	case 6:
+		month = "July"
+		break;
+	case 7:
+		month = "August"
+		break;
+	case 8:
+		month = "September"
+		break;
+	case 9:
+		month = "October"
+		break;
+	case 10:
+		month = "November"
+		break;
+	case 11:
+		month = "Decemeber"
+		break;
+}
+	let year  = curDate.getFullYear();
 	dateDisplay.textContent = `${day} ${date} of ${month} ${year}`;
 
 };
 
+function showall(){
+	this.classList.add("show")
+}
+
 setInterval(timeUpdater, 1000);
 dateUpdater()
-
 
 usernameInput.addEventListener("keypress", addToCookie)
