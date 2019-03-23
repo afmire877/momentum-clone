@@ -2,15 +2,14 @@ const timeDisplay = document.querySelector(".time");
 const dateDisplay = document.querySelector(".date");
 const usernameInput = document.querySelector(".username");
 const greeting = document.querySelector(".greeting");
+const place = document.querySelector(".place");
+const body = document.querySelector("body");
+const credit = document.querySelector(".insta");
+
 let curDate = new Date();
-
-window.onload = function () {
-	
-    document.querySelector(".container").style.display = "block";
-};
-
-setInterval(timeUpdater, 1000);
+let month = curDate.getMonth();
 let username = getCookie('username');
+
 
 if(username){
 	greeting.style.display = "inline-block";
@@ -22,21 +21,34 @@ if(username){
 	greeting.innerHTML = "What's your Name?";
 };
 
+let url = "https://api.unsplash.com/photos/random/?client_id=1a02363e818413166f715ddaf484d2cb22791107472445d7d04da08e1be77a35&orientation=landscape&query=landscape";
 
+$(.document).ready(function() {
+	fetch(url)
+		.then((resp) => resp.json()) 
+	  	.then(function(data) {
+	  	 	let photo = data.urls.regular;
+	  	 	place.textContent = `Location: ${data.location.title}`;
+	  	 	credit.textContent = `${data.user.instagram_username}`;
+	  	 	credit.href = data.user.portfolio_url;
+	  	 	body.style.backgroundImage = `url(${photo})`;
+	    	console.log(data)
+	    });
+})
 
 
 
 
 function addToCookie(e){
 	if(e.which == 13){
+		
 		let value = e.target.value;
-		e.preventDefault()
-	
-		if(!value) return;
-
+		console.log(value)
 	    greeting.textContent = `Hello ${value}.`
-
+    	usernameInput.style.display = "none";
+		greeting.innerHTML = `Hello <span class="stored-name">${username}</span>.` ;
 	    setCookie('username', value,365);
+	    e.preventDefault()
 	}
 	
 
@@ -139,60 +151,59 @@ function dateUpdater(){
 	case 7:
 		day = "Sunday"
 		break;
-}
+	};
 
 
 	
-	let month = curDate.getMonth();
 
-switch(curDate.getMonth() ){
-	case 0: 
-		month = "January"
-		break;
-	case 1:
-		month = "February"
-		break;
-	case 2:
-		month = "March"
-		break;
-	case 3:
-		month = "April"
-		break;
-	case 4:
-		month = "May"
-		break;
-	case 5:
-		month = "June"
-		break;
-	case 6:
-		month = "July"
-		break;
-	case 7:
-		month = "August"
-		break;
-	case 8:
-		month = "September"
-		break;
-	case 9:
-		month = "October"
-		break;
-	case 10:
-		month = "November"
-		break;
-	case 11:
-		month = "Decemeber"
-		break;
-}
-	let year  = curDate.getFullYear();
-	dateDisplay.textContent = `${day} ${date} of ${month} ${year}`;
+	switch(curDate.getMonth() ){
+		case 0: 
+			month = "January"
+			break;
+		case 1:
+			month = "February"
+			break;
+		case 2:
+			month = "March"
+			break;
+		case 3:
+			month = "April"
+			break;
+		case 4:
+			month = "May"
+			break;
+		case 5:
+			month = "June"
+			break;
+		case 6:
+			month = "July"
+			break;
+		case 7:
+			month = "August"
+			break;
+		case 8:
+			month = "September"
+			break;
+		case 9:
+			month = "October"
+			break;
+		case 10:
+			month = "November"
+			break;
+		case 11:
+			month = "Decemeber"
+			break;
+	}
+		let year  = curDate.getFullYear();
+		dateDisplay.textContent = `${day} ${date} of ${month} ${year}`;
 
 };
-
-function showall(){
-	this.classList.add("show")
-}
 
 setInterval(timeUpdater, 1000);
 dateUpdater()
 
-usernameInput.addEventListener("keypress", addToCookie)
+usernameInput.addEventListener("keypress", addToCookie);
+
+
+
+

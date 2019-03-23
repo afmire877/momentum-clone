@@ -5,13 +5,16 @@
 	font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+body {
+	background-image: url(back2.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 html,
 body{
 	height: 100%;
-}
-.qoute {
-	margin-top: 50px;
 }
 
 .container {
@@ -65,6 +68,9 @@ input {
 	top:0;
 	right: 0;
 	padding: 10px;
+	font-weight: 500;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px black;
 }
 
 .location {
@@ -72,6 +78,14 @@ input {
 	top:0;
 	left: 0;
 	padding: 10px;
+	font-weight: 500;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px black;
 
 }
 
+.greeting{
+
+	font-size:40px;
+	text-shadow: 1px 1px 1px black;
+}
