@@ -14,38 +14,39 @@ let username = getCookie('username');
 if(username){
 	greeting.style.display = "inline-block";
 	usernameInput.style.display = "none";
-	greeting.innerHTML = `Hello <span class="stored-name">${username}</span>.` ;
-}else {
+	greeting.innerHTML = `Hello <span class="stored-name">${username}</span>.` ;}else {
 	greeting.style.display = "none";
 	usernameInput.style.display = "inline-block";
-	greeting.innerHTML = "What's your Name?";
-};
+	greeting.innerHTML = "What's your Name?";};
 
 let url = "https://api.unsplash.com/photos/random/?client_id=1a02363e818413166f715ddaf484d2cb22791107472445d7d04da08e1be77a35&orientation=landscape&featured&query=landscape";
 
 $(".document").ready(function() {
 
+	var XHR = new XMLHttpRequest();
+	
 
+	XHR.onreadystatechange = function(){
+		 if (this.readyState == 4 && this.status == 200) {
+		 	let data = JSON.parse(XHR.responseText);
+		 	let photo = data.urls.regular;
 
-	fetch(url)
-		.then(function (resp){
-			console.log(resp.json())
-			 resp.json();
+			$('body').attr('src', 'http://picture.de/image.png').on('load', function() {
+			   $(this).remove(); // prevent memory leaks as @benweet suggested
+			   $('body').css('background-image', `url(${photo})`);
+			});
+	  	 	body.style.backgroundImage = ;
+			place.textContent = `Location: ${data.location.title}`;
+			credit.textContent = `${data.user.instagram_username}`;
+			credit.href = data.user.portfolio_url;	
 
-		}) 
-	  	.then(function(data) {
-	  		console.log(data)
-	  	 	let photo = data.urls.full;
-	  	 	body.style.backgroundImage = `url(${photo})`;
-	  	 	place.textContent = `Location: ${data.location.title}`;
-	  	 	credit.textContent = `${data.user.instagram_username}`;
-	  	 	credit.href = data.user.portfolio_url;
-	  	 	
-	    	
-	    });
+		 }
+	}
+	XHR.open("GET", url, true);
+	XHR.send();
+
 
 })
-
 
 
 
@@ -148,7 +149,7 @@ function dateUpdater(){
 		break;
 	case 2:
 		day = "Tuesday"
-		brea;
+		break;
 	case 3:
 		day = "Wednesday"
 		break;

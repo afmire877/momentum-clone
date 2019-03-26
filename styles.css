@@ -6,7 +6,7 @@
 }
 
 body {
-	background-image: url(back2.jpg);
+	background:url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center rgba(255, 255, 255, 0.5);;
 	/*opacity: 0.7;*/
 	background-position: center;
 	background-repeat: no-repeat;
@@ -92,6 +92,9 @@ input {
 
 	font-size:40px;
 	text-shadow: 1px 1px 1px black;
+}
+.container {
+	display : none;
 }
 
 /*CSS Loading Animation*/
