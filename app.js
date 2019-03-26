@@ -29,13 +29,13 @@ $(".document").ready(function() {
 	XHR.onreadystatechange = function(){
 		 if (this.readyState == 4 && this.status == 200) {
 		 	let data = JSON.parse(XHR.responseText);
-		 	let photo = data.urls.regular;
+		 	let photo = data.urls.regular + "&w=1500&dpi=1";
 
-			$('body').attr('src', 'http://picture.de/image.png').on('load', function() {
-			   $(this).remove(); // prevent memory leaks as @benweet suggested
-			   $('body').css('background-image', `url(${photo})`);
-			});
-	  	 	body.style.backgroundImage = ;
+			// $('body').attr('src', 'http://picture.de/image.png').on('load', function() {
+			//    $(this).remove(); // prevent memory leaks as @benweet suggested
+			   
+			// });
+			$('body').css('background-image', `url(${photo})`);
 			place.textContent = `Location: ${data.location.title}`;
 			credit.textContent = `${data.user.instagram_username}`;
 			credit.href = data.user.portfolio_url;	
