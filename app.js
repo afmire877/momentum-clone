@@ -21,19 +21,29 @@ if(username){
 	greeting.innerHTML = "What's your Name?";
 };
 
-let url = "https://api.unsplash.com/photos/random/?client_id=1a02363e818413166f715ddaf484d2cb22791107472445d7d04da08e1be77a35&orientation=landscape&query=landscape";
+let url = "https://api.unsplash.com/photos/random/?client_id=1a02363e818413166f715ddaf484d2cb22791107472445d7d04da08e1be77a35&orientation=landscape&featured&query=landscape";
 
-$(.document).ready(function() {
+$(".document").ready(function() {
+
+
+
 	fetch(url)
-		.then((resp) => resp.json()) 
+		.then(function (resp){
+			console.log(resp.json())
+			 resp.json();
+
+		}) 
 	  	.then(function(data) {
-	  	 	let photo = data.urls.regular;
+	  		console.log(data)
+	  	 	let photo = data.urls.full;
+	  	 	body.style.backgroundImage = `url(${photo})`;
 	  	 	place.textContent = `Location: ${data.location.title}`;
 	  	 	credit.textContent = `${data.user.instagram_username}`;
 	  	 	credit.href = data.user.portfolio_url;
-	  	 	body.style.backgroundImage = `url(${photo})`;
-	    	console.log(data)
+	  	 	
+	    	
 	    });
+
 })
 
 
@@ -130,6 +140,9 @@ function dateUpdater(){
 	}
 
 	switch(curDate.getDay() ){
+	case 0:
+		day = "Sunday"
+		break;
 	case 1:
 		day = "Monday"
 		break;
@@ -147,9 +160,6 @@ function dateUpdater(){
 		break;
 	case 6:
 		day = "Saturday"
-		break;
-	case 7:
-		day = "Sunday"
 		break;
 	};
 
